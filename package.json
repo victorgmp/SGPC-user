@@ -9,7 +9,7 @@
     "build": "rm -rf dist && tsc --project ./tsconfig.json",
     "clean": "rm -rf dist",
     "test": "mocha --timeout=20000 'test/**/*.test.ts'",
-    "lint": "node_modules/.bin/tslint --project ./tsconfig.json -e src/**/*.json"
+    "lint": "eslint -c .eslintrc --ext .ts ./src"
   },
   "author": "",
   "devDependencies": {
