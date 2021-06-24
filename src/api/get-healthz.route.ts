@@ -2,22 +2,21 @@ import * as _ from 'lodash';
 import {
   Request,
   Response,
-  RouteHandlerBase,
   RouteBaseTrustedMethods,
   ServiceResources,
 } from 'polymetis-node';
+import CustomApiRoute from '../submodule/lib/CustomApiRoute';
 
-export default class ApiRouteImpl extends RouteHandlerBase {
+export default class ApiRouteImpl extends CustomApiRoute {
   public method: RouteBaseTrustedMethods = 'get';
-  public url: string = '/healthz';
+  public url = '/healthz';
 
   constructor(resources: ServiceResources) {
     super(resources);
   }
 
+  // eslint-disable-next-line class-methods-use-this
   public async callback(req: Request, res: Response): Promise<any> {
-    await this.emitTask('check.healthz', {});
-
-    res.status(200).send('ok');
+    res.sendStatus(200);
   }
 }
